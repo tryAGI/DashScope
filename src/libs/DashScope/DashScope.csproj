@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Nuget">
+    <PackageId>tryAGI.DashScope</PackageId>
     <Description>C# SDK for Alibaba Cloud Model Studio DashScope APIs, including Qwen text, multimodal, image, and embedding endpoints.</Description>
     <PackageTags>api;client;sdk;dotnet;openapi;dashscope;alibaba;model-studio;qwen;llm;ai;multimodal;image-generation;embeddings</PackageTags>
   </PropertyGroup>

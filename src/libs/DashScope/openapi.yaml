@@ -1,0 +1,332 @@
+openapi: 3.0.3
+info:
+  title: Alibaba Cloud Model Studio DashScope API
+  version: 1.0.0
+  description: Hand-maintained OpenAPI document for DashScope text generation, multimodal generation, image tasks, and embedding APIs.
+servers:
+  - url: https://dashscope-intl.aliyuncs.com/api/v1
+    description: Singapore region. Override the client base URI for other DashScope regions.
+security:
+  - BearerAuth: []
+paths:
+  /services/aigc/text-generation/generation:
+    post:
+      operationId: createTextGeneration
+      tags:
+        - Generation
+      summary: Create a text generation request
+      parameters:
+        - $ref: "#/components/parameters/SseHeader"
+        - $ref: "#/components/parameters/WorkspaceHeader"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DashScopeRequest"
+      responses:
+        "200":
+          description: Generation response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashScopeResponse"
+  /services/aigc/multimodal-generation/generation:
+    post:
+      operationId: createMultimodalGeneration
+      tags:
+        - Generation
+      summary: Create a multimodal generation request
+      parameters:
+        - $ref: "#/components/parameters/SseHeader"
+        - $ref: "#/components/parameters/WorkspaceHeader"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DashScopeRequest"
+      responses:
+        "200":
+          description: Multimodal generation response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashScopeResponse"
+  /services/aigc/image-generation/generation:
+    post:
+      operationId: createImageGenerationTask
+      tags:
+        - Images
+      summary: Create an asynchronous image generation task
+      parameters:
+        - $ref: "#/components/parameters/AsyncHeader"
+        - $ref: "#/components/parameters/WorkspaceHeader"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DashScopeRequest"
+      responses:
+        "200":
+          description: Image generation task response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashScopeResponse"
+  /tasks/{task_id}:
+    get:
+      operationId: getTask
+      tags:
+        - Tasks
+      summary: Retrieve an asynchronous task result
+      parameters:
+        - name: task_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/WorkspaceHeader"
+      responses:
+        "200":
+          description: Task result.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashScopeResponse"
+  /services/embeddings/text-embedding/text-embedding:
+    post:
+      operationId: createTextEmbedding
+      tags:
+        - Embeddings
+      summary: Create text embeddings
+      parameters:
+        - $ref: "#/components/parameters/WorkspaceHeader"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmbeddingRequest"
+      responses:
+        "200":
+          description: Embedding response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmbeddingResponse"
+  /services/embeddings/multimodal-embedding/multimodal-embedding:
+    post:
+      operationId: createMultimodalEmbedding
+      tags:
+        - Embeddings
+      summary: Create multimodal embeddings
+      parameters:
+        - $ref: "#/components/parameters/WorkspaceHeader"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmbeddingRequest"
+      responses:
+        "200":
+          description: Multimodal embedding response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmbeddingResponse"
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: DashScope API key
+  parameters:
+    AsyncHeader:
+      name: X-DashScope-Async
+      in: header
+      required: false
+      description: Set to enable for asynchronous task creation.
+      schema:
+        type: string
+        enum:
+          - enable
+    SseHeader:
+      name: X-DashScope-SSE
+      in: header
+      required: false
+      description: Set to enable for server-sent event streaming.
+      schema:
+        type: string
+        enum:
+          - enable
+    WorkspaceHeader:
+      name: X-DashScope-WorkSpace
+      in: header
+      required: false
+      description: Workspace ID for non-default workspaces.
+      schema:
+        type: string
+  schemas:
+    DashScopeRequest:
+      type: object
+      additionalProperties: true
+      required:
+        - model
+        - input
+      properties:
+        model:
+          type: string
+        input:
+          $ref: "#/components/schemas/DashScopeInput"
+        parameters:
+          type: object
+          additionalProperties: true
+    DashScopeInput:
+      type: object
+      additionalProperties: true
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: "#/components/schemas/Message"
+        prompt:
+          type: string
+        contents:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    Message:
+      type: object
+      additionalProperties: true
+      required:
+        - role
+      properties:
+        role:
+          type: string
+        content:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                $ref: "#/components/schemas/ContentPart"
+    ContentPart:
+      type: object
+      additionalProperties: true
+      properties:
+        text:
+          type: string
+        image:
+          type: string
+        video:
+          type: string
+        audio:
+          type: string
+    DashScopeResponse:
+      type: object
+      additionalProperties: true
+      properties:
+        request_id:
+          type: string
+        code:
+          type: string
+        message:
+          type: string
+        output:
+          $ref: "#/components/schemas/DashScopeOutput"
+        usage:
+          $ref: "#/components/schemas/Usage"
+    DashScopeOutput:
+      type: object
+      additionalProperties: true
+      properties:
+        text:
+          type: string
+        finish_reason:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        task_id:
+          type: string
+        task_status:
+          type: string
+        task_metrics:
+          type: object
+          additionalProperties: true
+        results:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        finished:
+          type: boolean
+    Usage:
+      type: object
+      additionalProperties: true
+      properties:
+        input_tokens:
+          type: integer
+        output_tokens:
+          type: integer
+        total_tokens:
+          type: integer
+        image_count:
+          type: integer
+        size:
+          type: string
+    EmbeddingRequest:
+      type: object
+      additionalProperties: true
+      required:
+        - model
+        - input
+      properties:
+        model:
+          type: string
+        input:
+          oneOf:
+            - type: string
+            - type: array
+              items: {}
+            - type: object
+              additionalProperties: true
+        parameters:
+          type: object
+          additionalProperties: true
+    EmbeddingResponse:
+      type: object
+      additionalProperties: true
+      properties:
+        request_id:
+          type: string
+        code:
+          type: string
+        message:
+          type: string
+        output:
+          type: object
+          additionalProperties: true
+          properties:
+            embeddings:
+              type: array
+              items:
+                $ref: "#/components/schemas/EmbeddingObject"
+        usage:
+          $ref: "#/components/schemas/Usage"
+    EmbeddingObject:
+      type: object
+      additionalProperties: true
+      properties:
+        embedding:
+          type: array
+          items:
+            type: number
+            format: float
+        text_index:
+          type: integer

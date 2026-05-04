@@ -72,6 +72,93 @@ var response = await client.Videos.CreateVideoGenerationTaskAsync(
         ["prompt_extend"] = true,
     });
 ```
+
+### Qwen Image Edit
+Edit an image with a Qwen Image Edit model through the DashScope multimodal generation endpoint.
+
+```csharp
+if (Environment.GetEnvironmentVariable("DASHSCOPE_RUN_IMAGE_TESTS") is not { Length: > 0 })
+{
+    throw new AssertInconclusiveException("Set DASHSCOPE_RUN_IMAGE_TESTS to run paid image generation examples.");
+}
+
+using var client = new DashScopeClient(apiKey);
+
+var response = await client.Generation.CreateMultimodalGenerationAsync(
+    model: "qwen-image-edit-max",
+    input: new DashScopeInput
+    {
+        Messages = new List<Message>
+        {
+            new()
+            {
+                Role = "user",
+                Content = new List<ContentPart>
+                {
+                    new()
+                    {
+                        Image = "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260310/jiydyi/image+%2818%29-2026-03-10-16-39-59.webp",
+                    },
+                    new()
+                    {
+                        Text = "Add a small handwritten title in the lower-right corner while preserving the ink-wash style.",
+                    },
+                },
+            },
+        },
+    },
+    parameters: new Dictionary<string, object>
+    {
+        ["n"] = 1,
+        ["prompt_extend"] = true,
+        ["watermark"] = false,
+        ["size"] = "1024*1024",
+    });
+```
+
+### Wan Image Generation
+Generate or edit an image with Wan 2.6 Image through the DashScope multimodal generation endpoint.
+
+```csharp
+if (Environment.GetEnvironmentVariable("DASHSCOPE_RUN_IMAGE_TESTS") is not { Length: > 0 })
+{
+    throw new AssertInconclusiveException("Set DASHSCOPE_RUN_IMAGE_TESTS to run paid image generation examples.");
+}
+
+using var client = new DashScopeClient(apiKey);
+
+var response = await client.Generation.CreateMultimodalGenerationAsync(
+    model: "wan2.6-image",
+    input: new DashScopeInput
+    {
+        Messages = new List<Message>
+        {
+            new()
+            {
+                Role = "user",
+                Content = new List<ContentPart>
+                {
+                    new()
+                    {
+                        Text = "Using the reference image style, create a clean product hero image of a ceramic espresso cup.",
+                    },
+                    new()
+                    {
+                        Image = "https://cdn.wanx.aliyuncs.com/tmp/pressure/umbrella1.png",
+                    },
+                },
+            },
+        },
+    },
+    parameters: new Dictionary<string, object>
+    {
+        ["prompt_extend"] = true,
+        ["watermark"] = false,
+        ["n"] = 1,
+        ["enable_interleave"] = false,
+        ["size"] = "1K",
+    });
+```
 <!-- EXAMPLES:END -->
 
 ## Support

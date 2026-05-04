@@ -46,7 +46,8 @@ namespace DashScope
             ref string content);
 
         /// <summary>
-        /// Create a multimodal generation request
+        /// Create a multimodal generation request<br/>
+        /// Creates synchronous multimodal generation requests, including Qwen image-edit models and Wan 2.6 image generation/editing models.
         /// </summary>
         /// <param name="xDashScopeSse"></param>
         /// <param name="xDashScopeWorkSpace"></param>
@@ -409,7 +410,8 @@ namespace DashScope
             }
         }
         /// <summary>
-        /// Create a multimodal generation request
+        /// Create a multimodal generation request<br/>
+        /// Creates synchronous multimodal generation requests, including Qwen image-edit models and Wan 2.6 image generation/editing models.
         /// </summary>
         /// <param name="xDashScopeSse"></param>
         /// <param name="xDashScopeWorkSpace"></param>

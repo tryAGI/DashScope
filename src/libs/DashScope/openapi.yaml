@@ -37,6 +37,7 @@ paths:
       tags:
         - Generation
       summary: Create a multimodal generation request
+      description: Creates synchronous multimodal generation requests, including Qwen image-edit models and Wan 2.6 image generation/editing models.
       parameters:
         - $ref: "#/components/parameters/SseHeader"
         - $ref: "#/components/parameters/WorkspaceHeader"

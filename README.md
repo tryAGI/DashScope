@@ -73,6 +73,71 @@ var response = await client.Videos.CreateVideoGenerationTaskAsync(
     });
 ```
 
+### Wan Image to Video
+Create an asynchronous Wan image-to-video task using the Wan 2.7 media protocol.
+
+```csharp
+if (Environment.GetEnvironmentVariable("DASHSCOPE_RUN_VIDEO_TESTS") is not { Length: > 0 })
+{
+    throw new AssertInconclusiveException("Set DASHSCOPE_RUN_VIDEO_TESTS to run paid video generation examples.");
+}
+
+using var client = new DashScopeClient(apiKey);
+
+var response = await client.Videos.CreateVideoGenerationTaskAsync(
+    model: "wan2.7-i2v",
+    input: new DashScopeInput
+    {
+        Prompt = "A street-style performer steps forward from the wall art and turns toward the camera.",
+        Media = new List<DashScopeMedia>
+        {
+            new()
+            {
+                Type = "first_frame",
+                Url = "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/wpimhv/rap.png",
+            },
+        },
+    },
+    xDashScopeAsync: CreateVideoGenerationTaskXDashScopeAsync.Enable,
+    parameters: new Dictionary<string, object>
+    {
+        ["resolution"] = "720P",
+        ["duration"] = 5,
+        ["prompt_extend"] = true,
+    });
+```
+
+### Wan Reference to Video
+Create an asynchronous Wan reference-to-video task with reference media URLs.
+
+```csharp
+if (Environment.GetEnvironmentVariable("DASHSCOPE_RUN_VIDEO_TESTS") is not { Length: > 0 })
+{
+    throw new AssertInconclusiveException("Set DASHSCOPE_RUN_VIDEO_TESTS to run paid video generation examples.");
+}
+
+using var client = new DashScopeClient(apiKey);
+
+var response = await client.Videos.CreateVideoGenerationTaskAsync(
+    model: "wan2.6-r2v-flash",
+    input: new DashScopeInput
+    {
+        Prompt = "character1 walks through a studio and lifts a cup toward the camera.",
+        ReferenceUrls = new List<string>
+        {
+            "https://cdn.wanxai.com/static/demo-wan26/vace.mp4",
+        },
+    },
+    xDashScopeAsync: CreateVideoGenerationTaskXDashScopeAsync.Enable,
+    parameters: new Dictionary<string, object>
+    {
+        ["size"] = "1280*720",
+        ["duration"] = 5,
+        ["audio"] = false,
+        ["shot_type"] = "multi",
+    });
+```
+
 ### Qwen Image Edit
 Edit an image with a Qwen Image Edit model through the DashScope multimodal generation endpoint.
 

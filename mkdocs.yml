@@ -12,6 +12,8 @@ nav:
 - Examples:
   - Generate: examples/generate.md
   - Wan Text to Video: examples/wan-text-to-video.md
+  - Wan Image to Video: examples/wan-image-to-video.md
+  - Wan Reference to Video: examples/wan-reference-to-video.md
   - Qwen Image Edit: examples/qwen-image-edit.md
   - Wan Image Generation: examples/wan-image-generation.md
 # EXAMPLES:END

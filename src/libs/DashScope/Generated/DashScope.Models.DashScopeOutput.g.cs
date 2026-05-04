@@ -45,6 +45,42 @@ namespace DashScope
         public object? TaskMetrics { get; set; }
 
         /// <summary>
+        /// Time when the asynchronous task was submitted.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("submit_time")]
+        public string? SubmitTime { get; set; }
+
+        /// <summary>
+        /// Time when the asynchronous task started running.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scheduled_time")]
+        public string? ScheduledTime { get; set; }
+
+        /// <summary>
+        /// Time when the asynchronous task finished.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("end_time")]
+        public string? EndTime { get; set; }
+
+        /// <summary>
+        /// Generated video URL returned after a successful Wan video task.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("video_url")]
+        public string? VideoUrl { get; set; }
+
+        /// <summary>
+        /// Original prompt submitted with the task.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("orig_prompt")]
+        public string? OrigPrompt { get; set; }
+
+        /// <summary>
+        /// Prompt used by the model after prompt rewriting, when returned.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actual_prompt")]
+        public string? ActualPrompt { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
@@ -71,6 +107,24 @@ namespace DashScope
         /// <param name="taskId"></param>
         /// <param name="taskStatus"></param>
         /// <param name="taskMetrics"></param>
+        /// <param name="submitTime">
+        /// Time when the asynchronous task was submitted.
+        /// </param>
+        /// <param name="scheduledTime">
+        /// Time when the asynchronous task started running.
+        /// </param>
+        /// <param name="endTime">
+        /// Time when the asynchronous task finished.
+        /// </param>
+        /// <param name="videoUrl">
+        /// Generated video URL returned after a successful Wan video task.
+        /// </param>
+        /// <param name="origPrompt">
+        /// Original prompt submitted with the task.
+        /// </param>
+        /// <param name="actualPrompt">
+        /// Prompt used by the model after prompt rewriting, when returned.
+        /// </param>
         /// <param name="results"></param>
         /// <param name="finished"></param>
 #if NET7_0_OR_GREATER
@@ -83,6 +137,12 @@ namespace DashScope
             string? taskId,
             string? taskStatus,
             object? taskMetrics,
+            string? submitTime,
+            string? scheduledTime,
+            string? endTime,
+            string? videoUrl,
+            string? origPrompt,
+            string? actualPrompt,
             global::System.Collections.Generic.IList<object>? results,
             bool? finished)
         {
@@ -92,6 +152,12 @@ namespace DashScope
             this.TaskId = taskId;
             this.TaskStatus = taskStatus;
             this.TaskMetrics = taskMetrics;
+            this.SubmitTime = submitTime;
+            this.ScheduledTime = scheduledTime;
+            this.EndTime = endTime;
+            this.VideoUrl = videoUrl;
+            this.OrigPrompt = origPrompt;
+            this.ActualPrompt = actualPrompt;
             this.Results = results;
             this.Finished = finished;
         }

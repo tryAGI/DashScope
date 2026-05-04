@@ -82,7 +82,7 @@ paths:
       tags:
         - Videos
       summary: Create an asynchronous Wan video generation task
-      description: Creates a DashScope Wan text-to-video generation task. Poll `/tasks/{task_id}` with the returned task ID to retrieve the result.
+      description: Creates a DashScope Wan video generation task, including text-to-video, legacy image-to-video, Wan 2.7 image-to-video, video continuation, and reference-to-video requests. Poll `/tasks/{task_id}` with the returned task ID to retrieve the result.
       parameters:
         - $ref: "#/components/parameters/AsyncHeader"
         - $ref: "#/components/parameters/WorkspaceHeader"
@@ -218,11 +218,49 @@ components:
             $ref: "#/components/schemas/Message"
         prompt:
           type: string
+        negative_prompt:
+          type: string
+          description: Prompt content to exclude from generated video or image output.
+        audio_url:
+          type: string
+          description: Public audio URL for Wan video models that accept driving or custom audio.
+        img_url:
+          type: string
+          description: First-frame image URL for legacy Wan image-to-video models such as wan2.6-i2v.
+        media:
+          type: array
+          description: Media assets for Wan 2.7 image-to-video tasks. Supported type values include first_frame, last_frame, driving_audio, and first_clip.
+          items:
+            $ref: "#/components/schemas/DashScopeMedia"
+        reference_urls:
+          type: array
+          description: Reference image or video URLs for Wan reference-to-video models such as wan2.6-r2v.
+          items:
+            type: string
+        reference_video_urls:
+          type: array
+          deprecated: true
+          description: Deprecated Wan reference-to-video field. Use reference_urls instead.
+          items:
+            type: string
         contents:
           type: array
           items:
             type: object
             additionalProperties: true
+    DashScopeMedia:
+      type: object
+      additionalProperties: true
+      required:
+        - type
+        - url
+      properties:
+        type:
+          type: string
+          description: Wan media role such as first_frame, last_frame, driving_audio, or first_clip.
+        url:
+          type: string
+          description: Public HTTP or HTTPS URL for the media asset.
     Message:
       type: object
       additionalProperties: true
@@ -283,6 +321,24 @@ components:
         task_metrics:
           type: object
           additionalProperties: true
+        submit_time:
+          type: string
+          description: Time when the asynchronous task was submitted.
+        scheduled_time:
+          type: string
+          description: Time when the asynchronous task started running.
+        end_time:
+          type: string
+          description: Time when the asynchronous task finished.
+        video_url:
+          type: string
+          description: Generated video URL returned after a successful Wan video task.
+        orig_prompt:
+          type: string
+          description: Original prompt submitted with the task.
+        actual_prompt:
+          type: string
+          description: Prompt used by the model after prompt rewriting, when returned.
         results:
           type: array
           items:
@@ -304,6 +360,33 @@ components:
           type: integer
         size:
           type: string
+        duration:
+          type: number
+          format: float
+          description: Total billable video duration, in seconds, when returned by video tasks.
+        input_video_duration:
+          type: number
+          format: float
+          description: Input video duration, in seconds, when returned by video tasks.
+        output_video_duration:
+          type: number
+          format: float
+          description: Output video duration, in seconds, when returned by video tasks.
+        video_duration:
+          type: integer
+          description: Generated video duration, in seconds, for legacy video task responses.
+        video_ratio:
+          type: string
+          description: Generated video aspect-ratio label for legacy video task responses.
+        video_count:
+          type: integer
+          description: Number of generated videos.
+        SR:
+          type: integer
+          description: Resolution tier returned by Wan video task responses.
+        audio:
+          type: boolean
+          description: Indicates whether a generated video includes audio.
     EmbeddingRequest:
       type: object
       additionalProperties: true

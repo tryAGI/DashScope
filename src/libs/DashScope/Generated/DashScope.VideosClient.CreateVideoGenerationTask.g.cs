@@ -47,7 +47,7 @@ namespace DashScope
 
         /// <summary>
         /// Create an asynchronous Wan video generation task<br/>
-        /// Creates a DashScope Wan text-to-video generation task. Poll `/tasks/{task_id}` with the returned task ID to retrieve the result.
+        /// Creates a DashScope Wan video generation task, including text-to-video, legacy image-to-video, Wan 2.7 image-to-video, video continuation, and reference-to-video requests. Poll `/tasks/{task_id}` with the returned task ID to retrieve the result.
         /// </summary>
         /// <param name="xDashScopeAsync"></param>
         /// <param name="xDashScopeWorkSpace"></param>
@@ -411,7 +411,7 @@ namespace DashScope
         }
         /// <summary>
         /// Create an asynchronous Wan video generation task<br/>
-        /// Creates a DashScope Wan text-to-video generation task. Poll `/tasks/{task_id}` with the returned task ID to retrieve the result.
+        /// Creates a DashScope Wan video generation task, including text-to-video, legacy image-to-video, Wan 2.7 image-to-video, video continuation, and reference-to-video requests. Poll `/tasks/{task_id}` with the returned task ID to retrieve the result.
         /// </summary>
         /// <param name="xDashScopeAsync"></param>
         /// <param name="xDashScopeWorkSpace"></param>

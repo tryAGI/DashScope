@@ -39,6 +39,54 @@ namespace DashScope
         public string? Size { get; set; }
 
         /// <summary>
+        /// Total billable video duration, in seconds, when returned by video tasks.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
+        public float? Duration { get; set; }
+
+        /// <summary>
+        /// Input video duration, in seconds, when returned by video tasks.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("input_video_duration")]
+        public float? InputVideoDuration { get; set; }
+
+        /// <summary>
+        /// Output video duration, in seconds, when returned by video tasks.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("output_video_duration")]
+        public float? OutputVideoDuration { get; set; }
+
+        /// <summary>
+        /// Generated video duration, in seconds, for legacy video task responses.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("video_duration")]
+        public int? VideoDuration { get; set; }
+
+        /// <summary>
+        /// Generated video aspect-ratio label for legacy video task responses.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("video_ratio")]
+        public string? VideoRatio { get; set; }
+
+        /// <summary>
+        /// Number of generated videos.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("video_count")]
+        public int? VideoCount { get; set; }
+
+        /// <summary>
+        /// Resolution tier returned by Wan video task responses.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("SR")]
+        public int? Sr { get; set; }
+
+        /// <summary>
+        /// Indicates whether a generated video includes audio.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("audio")]
+        public bool? Audio { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -52,6 +100,30 @@ namespace DashScope
         /// <param name="totalTokens"></param>
         /// <param name="imageCount"></param>
         /// <param name="size"></param>
+        /// <param name="duration">
+        /// Total billable video duration, in seconds, when returned by video tasks.
+        /// </param>
+        /// <param name="inputVideoDuration">
+        /// Input video duration, in seconds, when returned by video tasks.
+        /// </param>
+        /// <param name="outputVideoDuration">
+        /// Output video duration, in seconds, when returned by video tasks.
+        /// </param>
+        /// <param name="videoDuration">
+        /// Generated video duration, in seconds, for legacy video task responses.
+        /// </param>
+        /// <param name="videoRatio">
+        /// Generated video aspect-ratio label for legacy video task responses.
+        /// </param>
+        /// <param name="videoCount">
+        /// Number of generated videos.
+        /// </param>
+        /// <param name="sr">
+        /// Resolution tier returned by Wan video task responses.
+        /// </param>
+        /// <param name="audio">
+        /// Indicates whether a generated video includes audio.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -60,13 +132,29 @@ namespace DashScope
             int? outputTokens,
             int? totalTokens,
             int? imageCount,
-            string? size)
+            string? size,
+            float? duration,
+            float? inputVideoDuration,
+            float? outputVideoDuration,
+            int? videoDuration,
+            string? videoRatio,
+            int? videoCount,
+            int? sr,
+            bool? audio)
         {
             this.InputTokens = inputTokens;
             this.OutputTokens = outputTokens;
             this.TotalTokens = totalTokens;
             this.ImageCount = imageCount;
             this.Size = size;
+            this.Duration = duration;
+            this.InputVideoDuration = inputVideoDuration;
+            this.OutputVideoDuration = outputVideoDuration;
+            this.VideoDuration = videoDuration;
+            this.VideoRatio = videoRatio;
+            this.VideoCount = videoCount;
+            this.Sr = sr;
+            this.Audio = audio;
         }
 
         /// <summary>

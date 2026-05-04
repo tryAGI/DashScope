@@ -52,87 +52,99 @@ namespace DashScope
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<object>? Type6 { get; set; }
+        public global::System.Collections.Generic.IList<global::DashScope.DashScopeMedia>? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.OneOf<string, global::System.Collections.Generic.IList<global::DashScope.ContentPart>>? Type7 { get; set; }
+        public global::DashScope.DashScopeMedia? Type7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::DashScope.ContentPart>? Type8 { get; set; }
+        public global::System.Collections.Generic.IList<string>? Type8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.ContentPart? Type9 { get; set; }
+        public global::System.Collections.Generic.IList<object>? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.DashScopeResponse? Type10 { get; set; }
+        public global::DashScope.OneOf<string, global::System.Collections.Generic.IList<global::DashScope.ContentPart>>? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.DashScopeOutput? Type11 { get; set; }
+        public global::System.Collections.Generic.IList<global::DashScope.ContentPart>? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.Usage? Type12 { get; set; }
+        public global::DashScope.ContentPart? Type12 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public bool? Type13 { get; set; }
+        public global::DashScope.DashScopeResponse? Type13 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int? Type14 { get; set; }
+        public global::DashScope.DashScopeOutput? Type14 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.EmbeddingRequest? Type15 { get; set; }
+        public global::DashScope.Usage? Type15 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.OneOf<string, global::System.Collections.Generic.IList<object>, object>? Type16 { get; set; }
+        public bool? Type16 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.EmbeddingResponse? Type17 { get; set; }
+        public int? Type17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.EmbeddingResponseOutput? Type18 { get; set; }
+        public float? Type18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::DashScope.EmbeddingObject>? Type19 { get; set; }
+        public global::DashScope.EmbeddingRequest? Type19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.EmbeddingObject? Type20 { get; set; }
+        public global::DashScope.OneOf<string, global::System.Collections.Generic.IList<object>, object>? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<float>? Type21 { get; set; }
+        public global::DashScope.EmbeddingResponse? Type21 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public float? Type22 { get; set; }
+        public global::DashScope.EmbeddingResponseOutput? Type22 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.CreateTextGenerationXDashScopeSse? Type23 { get; set; }
+        public global::System.Collections.Generic.IList<global::DashScope.EmbeddingObject>? Type23 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.CreateMultimodalGenerationXDashScopeSse? Type24 { get; set; }
+        public global::DashScope.EmbeddingObject? Type24 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.CreateImageGenerationTaskXDashScopeAsync? Type25 { get; set; }
+        public global::System.Collections.Generic.IList<float>? Type25 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.CreateVideoGenerationTaskXDashScopeAsync? Type26 { get; set; }
+        public global::DashScope.CreateTextGenerationXDashScopeSse? Type26 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::DashScope.CreateMultimodalGenerationXDashScopeSse? Type27 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::DashScope.CreateImageGenerationTaskXDashScopeAsync? Type28 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::DashScope.CreateVideoGenerationTaskXDashScopeAsync? Type29 { get; set; }
 
         /// <summary>
         /// 
@@ -141,26 +153,34 @@ namespace DashScope
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<object>? ListType1 { get; set; }
+        public global::System.Collections.Generic.List<global::DashScope.DashScopeMedia>? ListType1 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.OneOf<string, global::System.Collections.Generic.List<global::DashScope.ContentPart>>? ListType2 { get; set; }
+        public global::System.Collections.Generic.List<string>? ListType2 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::DashScope.ContentPart>? ListType3 { get; set; }
+        public global::System.Collections.Generic.List<object>? ListType3 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::DashScope.OneOf<string, global::System.Collections.Generic.List<object>, object>? ListType4 { get; set; }
+        public global::DashScope.OneOf<string, global::System.Collections.Generic.List<global::DashScope.ContentPart>>? ListType4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::DashScope.EmbeddingObject>? ListType5 { get; set; }
+        public global::System.Collections.Generic.List<global::DashScope.ContentPart>? ListType5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<float>? ListType6 { get; set; }
+        public global::DashScope.OneOf<string, global::System.Collections.Generic.List<object>, object>? ListType6 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::DashScope.EmbeddingObject>? ListType7 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<float>? ListType8 { get; set; }
     }
 }

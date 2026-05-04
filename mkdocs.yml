@@ -9,6 +9,9 @@ nav:
 - Guides:
   - Microsoft.Extensions.AI: guides/meai.md
 # EXAMPLES:START
+- Examples:
+  - Generate: examples/generate.md
+  - Wan Text to Video: examples/wan-text-to-video.md
 # EXAMPLES:END
         
 theme:

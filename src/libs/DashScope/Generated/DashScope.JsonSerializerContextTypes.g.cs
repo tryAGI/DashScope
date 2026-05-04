@@ -129,6 +129,10 @@ namespace DashScope
         /// 
         /// </summary>
         public global::DashScope.CreateImageGenerationTaskXDashScopeAsync? Type25 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::DashScope.CreateVideoGenerationTaskXDashScopeAsync? Type26 { get; set; }
 
         /// <summary>
         /// 

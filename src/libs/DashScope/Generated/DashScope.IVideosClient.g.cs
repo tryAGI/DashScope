@@ -4,11 +4,10 @@
 namespace DashScope
 {
     /// <summary>
-    /// Hand-maintained OpenAPI document for DashScope text generation, multimodal generation, image tasks, video tasks, and embedding APIs.<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
-    public partial interface IDashScopeClient : global::System.IDisposable
+    public partial interface IVideosClient : global::System.IDisposable
     {
         /// <summary>
         /// The HttpClient instance.
@@ -44,31 +43,6 @@ namespace DashScope
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public EmbeddingsClient Embeddings { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public GenerationClient Generation { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ImagesClient Images { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public TasksClient Tasks { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public VideosClient Videos { get; }
 
     }
 }

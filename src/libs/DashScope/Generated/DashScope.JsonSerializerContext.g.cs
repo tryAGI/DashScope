@@ -25,6 +25,10 @@ namespace DashScope
 
             typeof(global::DashScope.JsonConverters.CreateImageGenerationTaskXDashScopeAsyncNullableJsonConverter),
 
+            typeof(global::DashScope.JsonConverters.CreateVideoGenerationTaskXDashScopeAsyncJsonConverter),
+
+            typeof(global::DashScope.JsonConverters.CreateVideoGenerationTaskXDashScopeAsyncNullableJsonConverter),
+
             typeof(global::DashScope.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<global::DashScope.ContentPart>>),
 
             typeof(global::DashScope.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<object>, object>),
@@ -58,6 +62,7 @@ namespace DashScope
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::DashScope.CreateTextGenerationXDashScopeSse), TypeInfoPropertyName = "CreateTextGenerationXDashScopeSse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::DashScope.CreateMultimodalGenerationXDashScopeSse), TypeInfoPropertyName = "CreateMultimodalGenerationXDashScopeSse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::DashScope.CreateImageGenerationTaskXDashScopeAsync), TypeInfoPropertyName = "CreateImageGenerationTaskXDashScopeAsync2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::DashScope.CreateVideoGenerationTaskXDashScopeAsync), TypeInfoPropertyName = "CreateVideoGenerationTaskXDashScopeAsync2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::DashScope.Message>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::DashScope.OneOf<string, global::System.Collections.Generic.List<global::DashScope.ContentPart>>))]

@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Alibaba Cloud Model Studio DashScope API
   version: 1.0.0
-  description: Hand-maintained OpenAPI document for DashScope text generation, multimodal generation, image tasks, and embedding APIs.
+  description: Hand-maintained OpenAPI document for DashScope text generation, multimodal generation, image tasks, video tasks, and embedding APIs.
 servers:
   - url: https://dashscope-intl.aliyuncs.com/api/v1
     description: Singapore region. Override the client base URI for other DashScope regions.
@@ -71,6 +71,29 @@ paths:
       responses:
         "200":
           description: Image generation task response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashScopeResponse"
+  /services/aigc/video-generation/video-synthesis:
+    post:
+      operationId: createVideoGenerationTask
+      tags:
+        - Videos
+      summary: Create an asynchronous Wan video generation task
+      description: Creates a DashScope Wan text-to-video generation task. Poll `/tasks/{task_id}` with the returned task ID to retrieve the result.
+      parameters:
+        - $ref: "#/components/parameters/AsyncHeader"
+        - $ref: "#/components/parameters/WorkspaceHeader"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DashScopeRequest"
+      responses:
+        "200":
+          description: Video generation task response.
           content:
             application/json:
               schema:

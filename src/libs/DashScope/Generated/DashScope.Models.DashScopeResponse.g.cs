@@ -75,5 +75,6 @@ namespace DashScope
         public DashScopeResponse()
         {
         }
+
     }
 }

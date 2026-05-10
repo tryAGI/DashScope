@@ -66,5 +66,6 @@ namespace DashScope
         public ContentPart()
         {
         }
+
     }
 }

@@ -60,5 +60,6 @@ namespace DashScope
         public EmbeddingRequest()
         {
         }
+
     }
 }

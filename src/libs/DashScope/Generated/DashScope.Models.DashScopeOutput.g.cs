@@ -168,5 +168,6 @@ namespace DashScope
         public DashScopeOutput()
         {
         }
+
     }
 }

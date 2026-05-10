@@ -50,5 +50,6 @@ namespace DashScope
         public Message()
         {
         }
+
     }
 }

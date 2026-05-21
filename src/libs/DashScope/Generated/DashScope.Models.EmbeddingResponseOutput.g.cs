@@ -39,5 +39,6 @@ namespace DashScope
         public EmbeddingResponseOutput()
         {
         }
+
     }
 }

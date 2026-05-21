@@ -163,5 +163,6 @@ namespace DashScope
         public Usage()
         {
         }
+
     }
 }

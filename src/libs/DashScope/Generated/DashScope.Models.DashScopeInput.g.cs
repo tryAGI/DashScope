@@ -121,5 +121,6 @@ namespace DashScope
         public DashScopeInput()
         {
         }
+
     }
 }

@@ -63,6 +63,35 @@ namespace DashScope
             global::DashScope.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await CreateVideoGenerationTaskAsResponseAsync(
+
+                request: request,
+                xDashScopeAsync: xDashScopeAsync,
+                xDashScopeWorkSpace: xDashScopeWorkSpace,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Create an asynchronous Wan video generation task<br/>
+        /// Creates a DashScope Wan video generation task, including text-to-video, legacy image-to-video, Wan 2.7 image-to-video, video continuation, and reference-to-video requests. Poll `/tasks/{task_id}` with the returned task ID to retrieve the result.
+        /// </summary>
+        /// <param name="xDashScopeAsync"></param>
+        /// <param name="xDashScopeWorkSpace"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::DashScope.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::DashScope.AutoSDKHttpResponse<global::DashScope.DashScopeResponse>> CreateVideoGenerationTaskAsResponseAsync(
+
+            global::DashScope.DashScopeRequest request,
+            global::DashScope.CreateVideoGenerationTaskXDashScopeAsync? xDashScopeAsync = default,
+            string? xDashScopeWorkSpace = default,
+            global::DashScope.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -95,6 +124,7 @@ namespace DashScope
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::DashScope.PathBuilder(
                                 path: "/services/aigc/video-generation/video-synthesis",
                                 baseUri: HttpClient.BaseAddress);
@@ -186,6 +216,8 @@ namespace DashScope
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -196,6 +228,11 @@ namespace DashScope
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::DashScope.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::DashScope.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -213,6 +250,8 @@ namespace DashScope
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -222,8 +261,7 @@ namespace DashScope
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::DashScope.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -232,6 +270,11 @@ namespace DashScope
                         __attempt < __maxAttempts &&
                         global::DashScope.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::DashScope.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::DashScope.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::DashScope.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -248,14 +291,15 @@ namespace DashScope
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::DashScope.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -295,6 +339,8 @@ namespace DashScope
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -315,6 +361,8 @@ namespace DashScope
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -339,9 +387,13 @@ namespace DashScope
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::DashScope.DashScopeResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::DashScope.DashScopeResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::DashScope.AutoSDKHttpResponse<global::DashScope.DashScopeResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::DashScope.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -369,9 +421,13 @@ namespace DashScope
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::DashScope.DashScopeResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::DashScope.DashScopeResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::DashScope.AutoSDKHttpResponse<global::DashScope.DashScopeResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::DashScope.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

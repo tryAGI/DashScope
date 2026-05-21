@@ -59,5 +59,6 @@ namespace DashScope
         public DashScopeRequest()
         {
         }
+
     }
 }

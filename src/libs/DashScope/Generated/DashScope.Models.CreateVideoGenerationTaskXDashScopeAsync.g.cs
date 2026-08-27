@@ -4,12 +4,12 @@
 namespace DashScope
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateVideoGenerationTaskXDashScopeAsync
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Enable,
     }

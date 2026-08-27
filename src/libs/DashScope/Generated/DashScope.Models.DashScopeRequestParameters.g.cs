@@ -4,7 +4,7 @@
 namespace DashScope
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class DashScopeRequestParameters
     {

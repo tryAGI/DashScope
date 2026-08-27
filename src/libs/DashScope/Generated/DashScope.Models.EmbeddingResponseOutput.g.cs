@@ -4,12 +4,12 @@
 namespace DashScope
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class EmbeddingResponseOutput
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("embeddings")]
         public global::System.Collections.Generic.IList<global::DashScope.EmbeddingObject>? Embeddings { get; set; }

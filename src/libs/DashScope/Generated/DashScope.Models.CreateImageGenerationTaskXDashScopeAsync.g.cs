@@ -4,12 +4,12 @@
 namespace DashScope
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateImageGenerationTaskXDashScopeAsync
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Enable,
     }

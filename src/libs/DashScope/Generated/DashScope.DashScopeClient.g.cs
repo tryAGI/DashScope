@@ -38,7 +38,7 @@ namespace DashScope
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::DashScope.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
@@ -48,7 +48,7 @@ namespace DashScope
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EmbeddingsClient Embeddings => new EmbeddingsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -57,7 +57,7 @@ namespace DashScope
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GenerationClient Generation => new GenerationClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -66,7 +66,7 @@ namespace DashScope
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ImagesClient Images => new ImagesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -75,7 +75,7 @@ namespace DashScope
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TasksClient Tasks => new TasksClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -84,7 +84,7 @@ namespace DashScope
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VideosClient Videos => new VideosClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {

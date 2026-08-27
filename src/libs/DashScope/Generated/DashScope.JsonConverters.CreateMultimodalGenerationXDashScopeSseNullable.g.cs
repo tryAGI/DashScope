@@ -20,7 +20,7 @@ namespace DashScope.JsonConverters
                     {
                         return global::DashScope.CreateMultimodalGenerationXDashScopeSseExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:
